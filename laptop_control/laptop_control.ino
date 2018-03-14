@@ -1,5 +1,4 @@
 #include <Servo.h> // calls up servo library
-
 Servo motorRgt; // creates servo objects to control servos
 Servo motorLft;//maximum of eight servo objects can be created
 
@@ -24,18 +23,11 @@ void loop() {
         byte val = Serial.read();
 
         if (val == 'o') {
-            motorRgt.write(98);   //forward ***NOTE  because one motor side faces the opposite
-            motorLft.write(98);  //dirrection on the bot, one motor is reversed to go forward.
-            delay(750);
-            motorRgt.write(101);   //forward ***NOTE  because one motor side faces the opposite
-            motorLft.write(101);  //dirrection on the bot, one motor is reversed to go forward.
-            delay(750);
-            motorRgt.write(111);   //forward ***NOTE  because one motor side faces the opposite
-            motorLft.write(111);  //dirrection on the bot, one motor is reversed to go forward.
-            delay(750);
-            motorRgt.write(121);   //forward ***NOTE  because one motor side faces the opposite
-            motorLft.write(121);  //dirrection on the bot, one motor is reversed to go forward.
-            delay(750);
+            for (int i = 91; i <= 121; i += 5) {
+                motorRgt.write(i);
+                motorLft.write(i);
+                delay(333);
+            }
         }
 
 
